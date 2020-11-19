@@ -45,10 +45,13 @@ export class MovieListComponent implements OnInit {
         console.log(res);
         this.testData = res;
         this.moviesArray = this.testData.results;
-       // console.log(this.testData);
+        // console.log(this.testData);
       });
   }
   public loadMore() {
+    if (this.movieSearch !== '' || this.movieSearch !== null) {
+      return;
+    }
     const pageNo = this.testData.page + 1;
     const headrs = new HttpHeaders({
       'content-type': 'application/json',
@@ -68,33 +71,34 @@ export class MovieListComponent implements OnInit {
         requestOptions
       )
       .subscribe(res => {
-      //  console.log(res);
+        //  console.log(res);
         this.testData = res;
         this.moviesArray.push(...res.results);
-      //  console.log(this.moviesArray);
+        //  console.log(this.moviesArray);
       });
-}
-public movieSearchfun(): void{
-  if (this.movieSearch === ''){
-    this.getData();
   }
+  public movieSearchfun(): void {
+    if (this.movieSearch === '') {
+      this.getData();
+      return;
+    }
 
-  const requestOptions = {
-    headers: new HttpHeaders({
-      'content-type': 'application/json',
-      authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzA2MDViZjIwZDYzZTRiZTY2ZWJiYzU0MjJiNTk1YiIsInN1YiI6IjVmNjg2ODQ1NWYyZGIxMDAzNTQwYjhlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.MZpTOOqQ6zydIY5fNxU_CCr62Yezgc28-gZxlhlpmlY'
-    })
-  };
-  this.http
-    .get<any>(
-      'https://api.themoviedb.org/3/search/movie' + '?query=' + this.movieSearch + '&api_key=c30605bf20d63e4be66ebbc5422b595b',
-      requestOptions
-    )
-    .subscribe(res => {
-      console.log(res);
-      this.moviesArray = [];
-      this.moviesArray.push(...res.results);
-    });
-}
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzA2MDViZjIwZDYzZTRiZTY2ZWJiYzU0MjJiNTk1YiIsInN1YiI6IjVmNjg2ODQ1NWYyZGIxMDAzNTQwYjhlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.MZpTOOqQ6zydIY5fNxU_CCr62Yezgc28-gZxlhlpmlY'
+      })
+    };
+    this.http
+      .get<any>(
+        'https://api.themoviedb.org/3/search/movie' + '?query=' + this.movieSearch + '&api_key=c30605bf20d63e4be66ebbc5422b595b',
+        requestOptions
+      )
+      .subscribe(res => {
+        console.log(res);
+        this.moviesArray = [];
+        this.moviesArray.push(...res.results);
+      });
+  }
 }
