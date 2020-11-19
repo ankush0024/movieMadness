@@ -14,7 +14,7 @@ export class AboutComponent implements OnInit {
   public testData: any = {};
   public moviesArray: any = [];
   public tesr: any = ['1', '2', '3'];
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.getData();
   }
   public NavigateToTest() {
