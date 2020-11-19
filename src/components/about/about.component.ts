@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -27,7 +27,7 @@ export class AboutComponent implements OnInit {
         'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzA2MDViZjIwZDYzZTRiZTY2ZWJiYzU0MjJiNTk1YiIsInN1YiI6IjVmNjg2ODQ1NWYyZGIxMDAzNTQwYjhlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.MZpTOOqQ6zydIY5fNxU_CCr62Yezgc28-gZxlhlpmlY'
     });
     const requestOptions = {
-      headers: new Headers({
+      headers: new HttpHeaders({
         'content-type': 'application/json',
         authorization:
           'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzA2MDViZjIwZDYzZTRiZTY2ZWJiYzU0MjJiNTk1YiIsInN1YiI6IjVmNjg2ODQ1NWYyZGIxMDAzNTQwYjhlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.MZpTOOqQ6zydIY5fNxU_CCr62Yezgc28-gZxlhlpmlY'
@@ -48,20 +48,20 @@ export class AboutComponent implements OnInit {
   }
   public loadMore() {
     const pageNo = this.testData.page + 1;
-    const headrs = new Headers({
+    const headrs = new HttpHeaders({
       'content-type': 'application/json',
       authorization:
         'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzA2MDViZjIwZDYzZTRiZTY2ZWJiYzU0MjJiNTk1YiIsInN1YiI6IjVmNjg2ODQ1NWYyZGIxMDAzNTQwYjhlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.MZpTOOqQ6zydIY5fNxU_CCr62Yezgc28-gZxlhlpmlY'
     });
     const requestOptions = {
-      headers: new Headers({
+      headers: new HttpHeaders({
         'content-type': 'application/json',
         authorization:
           'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzA2MDViZjIwZDYzZTRiZTY2ZWJiYzU0MjJiNTk1YiIsInN1YiI6IjVmNjg2ODQ1NWYyZGIxMDAzNTQwYjhlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.MZpTOOqQ6zydIY5fNxU_CCr62Yezgc28-gZxlhlpmlY'
       })
     };
     this.http
-      .get(
+      .get<any>(
         'https://api.themoviedb.org/3/trending/movie/day?page=' + pageNo + '&api_key=c30605bf20d63e4be66ebbc5422b595b',
         requestOptions
       )
