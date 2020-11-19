@@ -1,0 +1,13 @@
+<style>.imag{
+    display: block;
+    max-width: 300px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    padding-right: 40px;
+}</style>
+<div style="color: white;">
+    <div>{{movieData.original_title}}</div>
+    <div *ngFor="let val of movieData">{{val}}</div>
+</div>
+<img class='imag' [src]=baseImg+movieData.poster_path />

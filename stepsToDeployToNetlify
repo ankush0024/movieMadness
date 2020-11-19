@@ -1,0 +1,15 @@
+how to deploy an app to netlify :-
+create an angular app using cli
+add an "_redirects" file in src with contents:-
+/*    /index.html    200
+
+add "src/_redirects" in myproject.architect.build.options.asset array in angular.json
+
+push the code to github 
+buiuld configuration netlify
+        Repository                  github.com/ankush0024/movieMadness
+        Base directory                      Not set
+         Build command                   ng build --prod --aot
+       Publish directory            dist/movieMadness
+       Deploy log visibility             Logs are public
+       Builds                         Active
