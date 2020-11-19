@@ -14,6 +14,6 @@ export class MovieService {
   };
   constructor(private http: HttpClient) { }
   public getMovieData(url): Observable<any>{
-  return  this.http.get(url,this.requestOptions);
+  return  this.http.get(url, this.requestOptions);
    }
 }
