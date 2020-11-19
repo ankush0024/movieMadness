@@ -80,6 +80,7 @@ export class MovieListComponent implements OnInit {
   public movieSearchfun(): void {
     if (this.movieSearch === '') {
       this.getData();
+      return;
     }
 
     const requestOptions = {
