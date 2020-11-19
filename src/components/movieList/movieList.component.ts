@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  selector: 'app-movielist',
+  templateUrl: './movieList.component.html',
+  styleUrls: ['./movieList.component.css']
 })
-export class AboutComponent implements OnInit {
+export class MovieListComponent implements OnInit {
   constructor(private route: Router, private http: HttpClient) { }
   public baseImgUrl = 'https://image.tmdb.org/t/p/w500/';
   public ee = '/7G2VvG1lU8q758uOqU6z2Ds0qpA.jpg';
@@ -14,8 +14,10 @@ export class AboutComponent implements OnInit {
   public testData: any = {};
   public moviesArray: any = [];
   public tesr: any = ['1', '2', '3'];
+  public movieSearch: string;
   ngOnInit(): void {
     this.getData();
+    this.movieSearch = null;
   }
   public NavigateToTest() {
     this.route.navigateByUrl('/test');
@@ -71,5 +73,28 @@ export class AboutComponent implements OnInit {
         this.moviesArray.push(...res.results);
       //  console.log(this.moviesArray);
       });
+}
+public movieSearchfun(): void{
+  if (this.movieSearch === ''){
+    this.getData();
+  }
+
+  const requestOptions = {
+    headers: new HttpHeaders({
+      'content-type': 'application/json',
+      authorization:
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzA2MDViZjIwZDYzZTRiZTY2ZWJiYzU0MjJiNTk1YiIsInN1YiI6IjVmNjg2ODQ1NWYyZGIxMDAzNTQwYjhlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.MZpTOOqQ6zydIY5fNxU_CCr62Yezgc28-gZxlhlpmlY'
+    })
+  };
+  this.http
+    .get<any>(
+      'https://api.themoviedb.org/3/search/movie' + '?query=' + this.movieSearch + '&api_key=c30605bf20d63e4be66ebbc5422b595b',
+      requestOptions
+    )
+    .subscribe(res => {
+      console.log(res);
+      this.moviesArray = [];
+      this.moviesArray.push(...res.results);
+    });
 }
 }

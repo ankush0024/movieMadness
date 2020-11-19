@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent } from '../components/about/about.component';
+import { MovieListComponent } from '../components/movieList/movieList.component';
 import { PagenotfoundComponent } from '../components/pagenotfound/pagenotfound.component';
 import { TestComponent } from '../components/test/test.component';
 import { MovieComponent } from '../components/movie/movie.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
+import { HomeComponent } from '../components/home/home.component';
 const routes: Routes = [
- // { path: '', redirectTo: 'about', pathMatch: 'full' },
-  { path: '', component: AboutComponent },
-  { path: 'test', component: TestComponent },
-  { path: 'movie/:id', component: MovieComponent },
+   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: 'home', component: HomeComponent, children: [
+      { path: '', component: MovieListComponent }
+    ]
+  },
+  /* { path: 'test', component: TestComponent },
+  { path: 'movie/:id', component: MovieComponent }, */
   { path: '**', component: PagenotfoundComponent }
 ];
 
@@ -16,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
