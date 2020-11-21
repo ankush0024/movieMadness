@@ -8,10 +8,12 @@ import { TestComponent } from '../components/test/test.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MovieComponent } from '../components/movie/movie.component';
-import {InputTextModule} from 'primeng/inputtext';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { InputTextModule } from 'primeng/inputtext';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { HomeComponent } from '../components/home/home.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,8 +24,9 @@ import { HomeComponent } from '../components/home/home.component';
     NavbarComponent,
     HomeComponent
   ],
-  imports: [BrowserModule, InputTextModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, InputTextModule, BrowserAnimationsModule, AppRoutingModule,
+    HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

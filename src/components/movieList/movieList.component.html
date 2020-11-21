@@ -21,7 +21,7 @@
     background-color: rgb(42, 42, 42);
     text-align: center;
     border-radius: 4px;
-   cursor: pointer;" [routerLink]="['/movie',k.id]" [src]='baseImgUrl+k.poster_path' [alt]='k.original_title'></a>
+   cursor: pointer;" [routerLink]="['movie',k.id]" [src]='baseImgUrl+k.poster_path' [alt]='k.original_title'></a>
   <button class="loadMore" (click)="loadMore();">loadMore</button>
 </div>
 </div>

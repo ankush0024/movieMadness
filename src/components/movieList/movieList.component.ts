@@ -15,8 +15,16 @@ export class MovieListComponent implements OnInit {
   public moviesArray: any = [];
   public tesr: any = ['1', '2', '3'];
   public movieSearch: string;
+  public isitFavouriteTab;
   ngOnInit(): void {
-    this.getData();
+    this.isitFavouriteTab = sessionStorage.getItem('favouriteTab');
+    console.log(this.isitFavouriteTab);
+    if (this.isitFavouriteTab == false) {
+      this.moviesArray = JSON.parse(localStorage.getItem('movie_favorites'));
+    }
+    else {
+      this.getData();
+    }
     this.movieSearch = null;
   }
   public NavigateToTest() {
