@@ -49,9 +49,10 @@ export class MovieListComponent implements OnInit {
       });
   }
   public loadMore() {
-    if (this.movieSearch !== '' || this.movieSearch !== null) {
+    if (this.movieSearch !== '' && this.movieSearch !== null) {
       return;
     }
+
     const pageNo = this.testData.page + 1;
     const headrs = new HttpHeaders({
       'content-type': 'application/json',
