@@ -10,16 +10,15 @@ const routes: Routes = [
    { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home', component: HomeComponent, children: [
-      { path: '', component: MovieListComponent }
+      { path: '', component: MovieListComponent },
+      { path: 'movie/:id', component: MovieComponent }
     ]
   },
-  /* { path: 'test', component: TestComponent },
-  { path: 'movie/:id', component: MovieComponent }, */
   { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

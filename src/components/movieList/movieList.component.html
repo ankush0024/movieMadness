@@ -1,8 +1,9 @@
 
 <span style="margin-left:13vw;" class="p-input-icon-left">
   <i class="pi pi-search"></i>
-  <input type="text" style="background-color: #2a2a2a;" pInputText (input)="movieSearchfun()" placeholder="Search" [(ngModel)]="movieSearch" />
+  <input type="text" style="background-color: #2a2a2a;color:white;" pInputText (input)="movieSearchfun()" placeholder="Search" [(ngModel)]="movieSearch" />
 </span>
+
 <br><br><br>
 <div style="background-color: #121212;">
 <!-- <button (click)="NavigateToTest()">test</button> -->
@@ -17,11 +18,25 @@
     flex-direction: column;
     width: 175px;
     text-decoration: inherit;
-    color: inherit;"  *ngFor="let k of moviesArray"> <img style=" height: 220px;
+    color: inherit;height:100%;"  *ngFor="let k of moviesArray"> 
+    <!-- <span [hidden]="true" class="fa fa-star" style="color:white"></span>
+    <span [hidden]="true" class="fa fa-star" style="background-color:white"></span> -->
+    <img style=" height: 220px;
     background-color: rgb(42, 42, 42);
     text-align: center;
     border-radius: 4px;
-   cursor: pointer;" [routerLink]="['/movie',k.id]" [src]='baseImgUrl+k.poster_path' [alt]='k.original_title'></a>
+   cursor: pointer;" [title]='k.title' [src]='baseImgUrl+k.poster_path' [alt]='k.original_title'>
+   </a>
+
+  <!--  <a style="display: flex;
+   flex-direction: column;
+   width: 175px;
+   text-decoration: inherit;
+   color: inherit;"  *ngFor="let k of moviesArray"> <img style=" height: 220px;
+   background-color: rgb(42, 42, 42);
+   text-align: center;
+   border-radius: 4px;
+  cursor: pointer;" [routerLink]="['movie',k.id]" [title]='k.title' [src]='baseImgUrl+k.poster_path' [alt]='k.original_title'></a> -->
   <button class="loadMore" (click)="loadMore();">loadMore</button>
 </div>
 </div>

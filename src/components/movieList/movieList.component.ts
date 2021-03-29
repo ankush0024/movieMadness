@@ -15,8 +15,16 @@ export class MovieListComponent implements OnInit {
   public moviesArray: any = [];
   public tesr: any = ['1', '2', '3'];
   public movieSearch: string;
+  public isitFavouriteTab;
   ngOnInit(): void {
-    this.getData();
+    this.isitFavouriteTab = sessionStorage.getItem('favouriteTab');
+    console.log(this.isitFavouriteTab);
+    if (this.isitFavouriteTab == true) {
+      this.moviesArray = JSON.parse(localStorage.getItem('movie_favorites'));
+    }
+    else {
+      this.getData();
+    }
     this.movieSearch = null;
   }
   public NavigateToTest() {
@@ -45,13 +53,14 @@ export class MovieListComponent implements OnInit {
         console.log(res);
         this.testData = res;
         this.moviesArray = this.testData.results;
-        // console.log(this.testData);
+         console.log(this.moviesArray);
       });
   }
   public loadMore() {
-    if (this.movieSearch !== '' || this.movieSearch !== null) {
+    if (this.movieSearch !== '' && this.movieSearch !== null) {
       return;
     }
+
     const pageNo = this.testData.page + 1;
     const headrs = new HttpHeaders({
       'content-type': 'application/json',
@@ -74,7 +83,7 @@ export class MovieListComponent implements OnInit {
         //  console.log(res);
         this.testData = res;
         this.moviesArray.push(...res.results);
-        //  console.log(this.moviesArray);
+          console.log(this.moviesArray);
       });
   }
   public movieSearchfun(): void {

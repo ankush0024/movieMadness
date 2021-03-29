@@ -1,0 +1,25 @@
+.favBtn:hover {
+  background: rgb(255, 64, 64);
+  border: 1px solid rgb(255, 64, 64);
+  color: rgb(255, 255, 255);
+
+}
+.imag {
+    display: block;
+    max-width: 300px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    padding-right: 40px;
+  }
+
+  .favBtn{width: auto;
+  padding: 10px;
+  background: rgb(18, 18, 18);
+  border: 1px solid rgb(145, 145, 145);
+  border-radius: 4px;
+  color: rgb(145, 145, 145);
+  margin-right: 20px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-size: 16px;}
