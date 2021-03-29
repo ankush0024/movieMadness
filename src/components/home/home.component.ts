@@ -10,7 +10,6 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    localStorage.setItem('movie_favorites', JSON.stringify([]));
     sessionStorage.setItem('favouriteTab', JSON.stringify(false));
   }
 

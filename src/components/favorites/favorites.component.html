@@ -1,0 +1,27 @@
+<p>favorites works!</p>
+<p [hidden]="moviesArray.length>0" style="color:white;">No favourite movie saved</p>
+  <br><br><br>
+  <div style="background-color: #121212;">
+  <div style="display: grid;
+      gap: 20px 10px;
+      grid-template-columns: repeat(6, auto);
+      width: 80%;
+      height: 100%;
+      margin: 0px auto;
+  ">
+   <a style="display: flex;
+      flex-direction: column;
+      width: 175px;
+      text-decoration: inherit;
+      color: inherit;height:100%;"  *ngFor="let k of moviesArray"> 
+      <img style=" height: 220px;
+      background-color: rgb(42, 42, 42);
+      text-align: center;
+      border-radius: 4px;
+     " [title]='k.title' [src]='baseImgUrl+k.poster_path' [alt]='k.title'>
+     </a>
+  
+    
+  </div>
+  </div>
+  
