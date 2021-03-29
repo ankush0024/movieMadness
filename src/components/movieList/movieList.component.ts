@@ -19,7 +19,7 @@ export class MovieListComponent implements OnInit {
   ngOnInit(): void {
     this.isitFavouriteTab = sessionStorage.getItem('favouriteTab');
     console.log(this.isitFavouriteTab);
-    if (this.isitFavouriteTab == false) {
+    if (this.isitFavouriteTab == true) {
       this.moviesArray = JSON.parse(localStorage.getItem('movie_favorites'));
     }
     else {
@@ -53,7 +53,7 @@ export class MovieListComponent implements OnInit {
         console.log(res);
         this.testData = res;
         this.moviesArray = this.testData.results;
-        // console.log(this.testData);
+         console.log(this.moviesArray);
       });
   }
   public loadMore() {
@@ -83,7 +83,7 @@ export class MovieListComponent implements OnInit {
         //  console.log(res);
         this.testData = res;
         this.moviesArray.push(...res.results);
-        //  console.log(this.moviesArray);
+          console.log(this.moviesArray);
       });
   }
   public movieSearchfun(): void {
