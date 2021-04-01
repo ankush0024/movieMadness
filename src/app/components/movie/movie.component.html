@@ -3,6 +3,7 @@
 <div style="border:1px solid white;color: white;">
   <div>
     <div>
+     <button (click)="test();">yyyy</button>
       <p style="font-size: 48px;font-weight: 700;height: 1vh;">{{MovieTitle}}</p>
       <p style="
       font-size: 24px;
@@ -14,9 +15,12 @@
     </div>
     <div *ngFor = " let val of movieData">{{val}}</div>
   </div>
+ 
   <br>
-  <img class='imag' [src]=moviePoster />
-  <p>About the movie</p>
+  <img style="display:inline;" class='imag' [src]=moviePoster />
+ <!--  <iframe style="display:inline;" width="640" height="360" src="//www.youtube.com/embed/odM92ap8_c0?rel=0&html5=1&vq=hd720&modestbranding=1&autoplay=1" frameborder="0" allowfullscreen autoplay></iframe> -->
+ <iframe style="display:inline;" width="640" height="360" [src]="videoLink|santise:'resourceUrl'" frameborder="0" allowfullscreen autoplay></iframe> 
+ <p>About the movie</p>
   <p>{{movieDescription}}</p>
   <p style="color: rgb(255, 64, 64);">Actors</p>
   <p *ngFor="let t of movieActors">

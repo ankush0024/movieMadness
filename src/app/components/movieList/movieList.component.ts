@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MovieService } from 'src/shared/movie.service';
+import { MovieService } from '../../shared/movie.service';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-movielist',
@@ -14,9 +14,13 @@ export class MovieListComponent implements OnInit {
   public moviesArray: any = [];
   public movieSearch: string;
   public isitFavouriteTab;
-  public MovieOrTv:string="movie";
+  public MovieOrTv:string;
   public favouriteMovieArray:any;
   ngOnInit(): void {
+    if(!localStorage.getItem("MovieOrTv")||localStorage.getItem("MovieOrTv")==undefined){
+      localStorage.setItem("MovieOrTv","movie");
+    }
+    this.MovieOrTv=localStorage.getItem("MovieOrTv");
     if(localStorage.getItem('FavouriteMovie')){
     this.favouriteMovieArray=JSON.parse(localStorage.getItem('FavouriteMovie'));
   }
@@ -33,6 +37,9 @@ export class MovieListComponent implements OnInit {
     }
     this.movieSearch = null;
   }
+  movieDetail(id){
+    this.route.navigate(['/home/movie',id]);
+  }
   public NavigateToTest() {
     this.route.navigateByUrl('/test');
   }
@@ -48,6 +55,7 @@ export class MovieListComponent implements OnInit {
     
   }
   public getData() {
+    localStorage.setItem("MovieOrTv",this.MovieOrTv);
     this.getTrending(1)
       .subscribe(res => {
         console.log("didnt came here");
