@@ -1,9 +1,23 @@
 
+<a  style="margin-left: 200px;font-size: 100%;background-color:  #121212;color:white;">Trending <span *ngIf="MovieOrTv==='movie'">Movies</span><span *ngIf="MovieOrTv==='Tv'">Tv Shows</span></a><br>
+<br>
 <span style="margin-left:13vw;" class="p-input-icon-left">
   <i class="pi pi-search"></i>
   <input type="text" style="background-color: #2a2a2a;color:white;" pInputText (input)="movieSearchfun()" placeholder="Search" [(ngModel)]="movieSearch" />
 </span>
-
+<span style="margin-left: 45vw;">
+  <select style="background-color: #2a2a2a;
+  color: white;
+  height: 6.9vh;
+  width: 12vw;" [(ngModel)]="MovieOrTv" (change)="getData();movieSearch=null;">
+    <option value="movie">
+Movies
+    </option>
+    <option value="Tv">
+      Tv-Shows
+          </option>
+  </select>
+</span>
 <br><br><br>
 <div style="background-color: #121212;">
 <!-- <button (click)="NavigateToTest()">test</button> -->
@@ -19,13 +33,11 @@
     width: 175px;
     text-decoration: inherit;
     color: inherit;height:100%;"  *ngFor="let k of moviesArray"> 
-    <!-- <span [hidden]="true" class="fa fa-star" style="color:white"></span>
-    <span [hidden]="true" class="fa fa-star" style="background-color:white"></span> -->
-    <img style=" height: 220px;
+    <img class="imageMovieList" style=" height: 220px;
     background-color: rgb(42, 42, 42);
     text-align: center;
     border-radius: 4px;
-   " [title]='k.title' [src]='baseImgUrl+k.poster_path' [alt]='k.original_title'>
+   " [title]='k.title' [src]='baseImgUrl+k.poster_path' (click)="addToFav(k);movieDetail(k.id);" [alt]='k.title'>
    </a>
 
   <!--  <a style="display: flex;
@@ -37,6 +49,6 @@
    text-align: center;
    border-radius: 4px;
   cursor: pointer;" [routerLink]="['movie',k.id]" [title]='k.title' [src]='baseImgUrl+k.poster_path' [alt]='k.original_title'></a> -->
-  <button class="loadMore" (click)="loadMore();">loadMore</button>
+  <button [hidden]="movieSearch" class="loadMore" (click)="loadMore();">LoadMore</button>
 </div>
 </div>
