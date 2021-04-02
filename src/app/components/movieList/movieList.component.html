@@ -33,7 +33,7 @@ Movies
     width: 175px;
     text-decoration: inherit;
     color: inherit;height:100%;"  *ngFor="let k of moviesArray"> 
-    <img style=" height: 220px;
+    <img class="imageMovieList" style=" height: 220px;
     background-color: rgb(42, 42, 42);
     text-align: center;
     border-radius: 4px;
@@ -49,6 +49,6 @@ Movies
    text-align: center;
    border-radius: 4px;
   cursor: pointer;" [routerLink]="['movie',k.id]" [title]='k.title' [src]='baseImgUrl+k.poster_path' [alt]='k.original_title'></a> -->
-  <button [hidden]="movieSearch" class="loadMore" (click)="loadMore();">loadMore</button>
+  <button [hidden]="movieSearch" class="loadMore" (click)="loadMore();">LoadMore</button>
 </div>
 </div>

@@ -9,3 +9,9 @@
 }
 .loadMore:hover{background: rgb(42, 42, 42);
     color: rgb(255, 255, 255);}
+.imageMovieList:hover{
+ border:1px solid white;
+}
+.imageMovieList{
+cursor:pointer;
+    }
