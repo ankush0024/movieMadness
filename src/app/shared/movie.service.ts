@@ -21,14 +21,13 @@ export class MovieService {
   public tvByIdUrl=this.baseApiUrl+'tv/';
   AIzaSyBWX2H9CKxChFgsx51qWFiY0DvmeZF_Sgs
   private API_URL = 'https://www.googleapis.com/youtube/v3/search';
-  private API_TOKEN = 'AIzaSyBWX2H9CKxChFgsx51qWFiY0DvmeZF_Sgs';
+  private API_TOKEN = 'AIzaSyASPO73rBcODRYS6W2nln1CJo-2ctsS5Uc';
   /* private API_TOKEN = 'AIzaSyCh_gyw-T4oBwpVfKqfpbfp_9Pezr2fqZg'; */
   constructor(private http: HttpClient) { }
   public getMovieData(url): Observable<any> {
     return this.http.get(url, this.requestOptions);
   }
   public getTrendingMovieData(page): Observable<any> {
-   
     return this.http.get(`${this.trendingMovieUrl}?page=${page}`, this.requestOptions);
   }
   public getTrendingTvData(page): Observable<any> {
@@ -49,8 +48,12 @@ export class MovieService {
   public SearchMovie(query){
     return this.http.get(`${this.searchMovie}?query=${query}`, this.requestOptions);
   }
+ /*  .map(person => ({
+    ...person,
+    title: `${person.name}`
+  })); */
   public SearchTv(query){
-    return this.http.get(`${this.searchTv}?query=${query}`, this.requestOptions)
+    return this.http.get(`${this.searchTv}?query=${query}`, this.requestOptions);
   }
   public getMovieById(id): Observable<any> {
     return this.http.get(this.movieByIdUrl+id, this.requestOptions);
@@ -62,10 +65,10 @@ export class MovieService {
   public getVideos(movieName: string,movierOrTv): Observable <any> {
     let url;
     if(movierOrTv==='movie'){
-      url = `${this.API_URL}?q=${movieName}%20official%20trailer&key=${this.API_TOKEN}&part=snippet&type=video&maxResults=10`;
+      url = `${this.API_URL}?q=${movieName}%20official%20trailer&key=${this.API_TOKEN}&part=snippet&type=video&maxResults=2`;
     }
     else{
-      url = `${this.API_URL}?q=${movieName}%20Tv%20Show%20official%20trailer&key=${this.API_TOKEN}&part=snippet&type=video&maxResults=10`;
+      url = `${this.API_URL}?q=${movieName}%20Tv%20Show%20official%20trailer&key=${this.API_TOKEN}&part=snippet&type=video&maxResults=2`;
     }
    
     return this.http.get(url).pipe(

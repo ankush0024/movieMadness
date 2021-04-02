@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../shared/movie.service';
-
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -26,7 +26,7 @@ export class MovieComponent implements OnInit {
   public youtubeURLPrefix = "//www.youtube.com/embed/";
   public youtubeURLSuffix = "?rel=0&html5=1&vq=hd720&modestbranding=1&autoplay=1";
   public movieInfo = { id: '', poster_path: '', title: '' };
-  constructor(private route: ActivatedRoute, private movie: MovieService) { }
+  constructor(private route: ActivatedRoute, private movie: MovieService,private spinner: NgxSpinnerService) { }
   public youtubeVideoList: any = [];
   public videoLink;
   public videoId;
@@ -34,6 +34,7 @@ export class MovieComponent implements OnInit {
   public movieName;
   public MovieOrTv;
   ngOnInit(): void {
+    this.spinner.show();
     this.MovieOrTv=localStorage.getItem("MovieOrTv");
     this.favouriteMovies = JSON.parse(localStorage.getItem('movie_favorites'));
     this.movieData = null;
@@ -54,76 +55,55 @@ export class MovieComponent implements OnInit {
     this.movie.getMovieById(movieId).subscribe((res) => {
       this.movieData = res;
       this.movieName=res['original_title'];
-  console.log(this.movieName);
+      this.movieDescription = this.movieData.overview;
+      this.MovieTitle = this.movieData.original_title;
+      this.movieInfo.title = this.MovieTitle;
+      this.movieInfo.poster_path = this.movieData.poster_path;
+
+      this.moviePoster = this.baseImg + this.movieData.poster_path;
+      this.movieRating = this.movieData.vote_average;
+      this.movieGenre = [];
+      for (const val of this.movieData.genres) {
+        this.movieGenre.push(val.name);
+      }
   this.movie.getVideos(this.movieName,"movie").subscribe((res) => {
+    this.spinner.hide();
     console.log(res);
     this.youtubeVideoList = res;
     this.videoId = res[0].id.videoId;
     this.videoLink = `${this.youtubeURLPrefix}${this.videoId}${this.youtubeURLSuffix}`;
     console.log(this.videoLink);
   });
-      this.movieGenre = [];
-      for (const val of this.movieData.genres) {
-        this.movieGenre.push(val.name);
-      }
-      this.movieDescription = this.movieData.overview;
-      this.MovieTitle = this.movieData.original_title;
-      this.movieInfo.title = this.MovieTitle;
-      this.movieInfo.poster_path = this.movieData.poster_path;
+     
 
-      this.moviePoster = this.baseImg + this.movieData.poster_path;
-      this.movieRating = this.movieData.vote_average;
-      this.movieData = res;
-      
-      this.movieGenre = [];
-      for (const val of this.movieData.genres) {
-        this.movieGenre.push(val.name);
-      }
-      this.movieDescription = this.movieData.overview;
-      this.MovieTitle = this.movieData.original_title;
-      this.movieInfo.title = this.MovieTitle;
-      this.movieInfo.poster_path = this.movieData.poster_path;
-
-      this.moviePoster = this.baseImg + this.movieData.poster_path;
-      this.movieRating = this.movieData.vote_average;
     });
   }
   public getTv(tvId){
     this.movie.getTvById(tvId).subscribe((res) => {
       this.movieData = res;
-      this.movieName=res['original_name'];
+      this.movieName=res['name'];
+      console.log("movie nme: "+this.movieName);
+      this.movieDescription = this.movieData.overview;
+      this.MovieTitle = this.movieData.original_title;
+      this.movieInfo.title = this.MovieTitle;
+      this.movieInfo.poster_path = this.movieData.poster_path;
+      this.moviePoster = this.baseImg + this.movieData.poster_path;
+      this.movieRating = this.movieData.vote_average;
+
+      this.movieGenre = [];
+      for (const val of this.movieData.genres) {
+        this.movieGenre.push(val.name);
+      }
+
  // console.log(this.movieName);
   this.movie.getVideos(this.movieName,"tv").subscribe((res) => {
+    this.spinner.hide();
     console.log(res);
     this.youtubeVideoList = res;
     this.videoId = res[0].id.videoId;
     this.videoLink = `${this.youtubeURLPrefix}${this.videoId}${this.youtubeURLSuffix}`;
     console.log(this.videoLink);
   });
-      this.movieGenre = [];
-      for (const val of this.movieData.genres) {
-        this.movieGenre.push(val.name);
-      }
-      this.movieDescription = this.movieData.overview;
-      this.MovieTitle = this.movieData.original_title;
-      this.movieInfo.title = this.MovieTitle;
-      this.movieInfo.poster_path = this.movieData.poster_path;
-
-      this.moviePoster = this.baseImg + this.movieData.poster_path;
-      this.movieRating = this.movieData.vote_average;
-      this.movieData = res;
-      
-      this.movieGenre = [];
-      for (const val of this.movieData.genres) {
-        this.movieGenre.push(val.name);
-      }
-      this.movieDescription = this.movieData.overview;
-      this.MovieTitle = this.movieData.original_title;
-      this.movieInfo.title = this.MovieTitle;
-      this.movieInfo.poster_path = this.movieData.poster_path;
-
-      this.moviePoster = this.baseImg + this.movieData.poster_path;
-      this.movieRating = this.movieData.vote_average;
     });
   }
   test() {

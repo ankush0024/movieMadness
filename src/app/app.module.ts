@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpInterceptorInterceptor } from './shared/http-interceptor.interceptor';
 import {FavoritesComponent} from './components/favorites/favorites.component';
 import { SantisePipe } from './shared/santise.pipe';
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,7 @@ import { SantisePipe } from './shared/santise.pipe';
     HomeComponent,FavoritesComponent, SantisePipe
   ],
   imports: [BrowserModule, InputTextModule, BrowserAnimationsModule, AppRoutingModule,
-    HttpClientModule, FormsModule],
+    HttpClientModule, FormsModule,NgxSpinnerModule],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
