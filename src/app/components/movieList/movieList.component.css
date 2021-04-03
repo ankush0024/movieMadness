@@ -54,7 +54,7 @@ border:1px solid transparent;
     }
     @media only screen and (max-width: 600px) {
       .spanMovieList2{
-        margin-left: 39.9vw ;
+        margin-left: 29.9vw;
     }
     
     .divMovieList2 {
@@ -75,11 +75,10 @@ border:1px solid transparent;
         height: 100%;
     }
     .imageMovieList1{
-      width:22vw;
+      width: 28vw;
           }
           .selectMovieList1 {
-   
-            height: 5.9vh;
-            width: 16vw;
+            height: 7.2vh;
+    width: 24vw;
         }
      }
