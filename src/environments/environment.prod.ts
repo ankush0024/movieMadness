@@ -5,5 +5,8 @@ export const environment = {
   trendingMovieList:'trending/movie/day',
   trendingTvShowList:'trending/tv/day',
   searchMovie:'search/movie',
-  searchTv:'search/tv'
+  searchTv:'search/tv',
+  Youtube_Api_Url: 'https://www.googleapis.com/youtube/v3/search',
+  movieByIdUrl: 'movie/',
+  tvByIdUrl: 'tv/'
 };

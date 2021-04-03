@@ -68,11 +68,11 @@ export class MovieComponent implements OnInit {
       }
   this.movie.getVideos(this.movieName,"movie").subscribe((res) => {
     this.spinner.hide();
-    console.log(res);
+
     this.youtubeVideoList = res;
     this.videoId = res[0].id.videoId;
     this.videoLink = `${this.youtubeURLPrefix}${this.videoId}${this.youtubeURLSuffix}`;
-    console.log(this.videoLink);
+
   });
      
 
@@ -82,7 +82,6 @@ export class MovieComponent implements OnInit {
     this.movie.getTvById(tvId).subscribe((res) => {
       this.movieData = res;
       this.movieName=res['name'];
-      console.log("movie nme: "+this.movieName);
       this.movieDescription = this.movieData.overview;
       this.MovieTitle = this.movieData.original_title;
       this.movieInfo.title = this.MovieTitle;
@@ -94,27 +93,17 @@ export class MovieComponent implements OnInit {
       for (const val of this.movieData.genres) {
         this.movieGenre.push(val.name);
       }
-
- // console.log(this.movieName);
   this.movie.getVideos(this.movieName,"tv").subscribe((res) => {
     this.spinner.hide();
-    console.log(res);
     this.youtubeVideoList = res;
     this.videoId = res[0].id.videoId;
     this.videoLink = `${this.youtubeURLPrefix}${this.videoId}${this.youtubeURLSuffix}`;
-    console.log(this.videoLink);
   });
     });
   }
   test() {
-    /* this.movie.getVideos("prison break").subscribe((res) => {
-      console.log("hhh");
-      console.log(res);
-    });
-    console.log(this.movieProducer); */
   }
   public addFavourite() {
-    console.log("f");
     this.favourite = !this.favourite;
     if (this.favourite) {
       this.favouriteMovies.push(this.movieInfo);

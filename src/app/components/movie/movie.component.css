@@ -5,9 +5,6 @@
 
 }
 .imag {
-    /* display: block;
-    max-width: 300px;
-    max-height: 400px; */
     width: auto;
     height: auto;
     padding-right: 40px;
@@ -36,3 +33,42 @@ color:white;
   cursor: pointer;
   font-family: Roboto;
   font-size: 16px;}
+.divMoive1{
+  margin-top: -6vh;
+}
+.pMoive1{
+  color:white;margin-top: -2vh;
+      font-size: 48px;
+      font-weight: 700;
+      height: 1vh;
+      margin-left: 4vw;
+}
+.divMoive2{
+  margin-left: 4.2vw;
+     margin-top: 10vh;
+}
+.h4Moive1{
+  color: rgb(255, 64, 64); display: inline;max-width: 30%;
+}
+.pMoive2{
+  margin-top: -4vh;
+    margin-left: 40vw;color:white;
+    font-size: 24px;
+    font-weight: 500;
+}
+.spanMoive1{
+  color:rgb(255, 64, 64);
+}
+.divMoive3{
+  color:white;    margin-left: 4vw;
+  max-width: 50vw;
+}
+.spanMoive2{
+  color:rgb(96, 96, 96);
+}
+.imgMoive1{
+  display:inline;margin-left: 4vw;    height: 30vw;
+}
+.iframeMoive1{
+  display:inline;
+}
