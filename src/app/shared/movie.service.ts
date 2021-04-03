@@ -19,9 +19,7 @@ export class MovieService {
   public searchTv = this.baseApiUrl + environment.searchTv;
   public movieByIdUrl = this.baseApiUrl + environment.movieByIdUrl;
   public tvByIdUrl = this.baseApiUrl + environment.tvByIdUrl;
-  /* AIzaSyBWX2H9CKxChFgsx51qWFiY0DvmeZF_Sgs */
   private API_URL = environment.Youtube_Api_Url;
-  private API_TOKEN = 'AIzaSyASPO73rBcODRYS6W2nln1CJo-2ctsS5Uc';
   constructor(private http: HttpClient) { }
   public getMovieData(url): Observable<any> {
     return this.http.get(url, this.requestOptions);
@@ -51,17 +49,15 @@ export class MovieService {
     return this.http.get(this.tvByIdUrl + id, this.requestOptions);
   }
 
-  public getVideos(movieName: string, movierOrTv): Observable<any> {
+  public getVideos(movieName: string, movierOrTv,ApiToken): Observable<any> {
     let url;
     if (movierOrTv === 'movie') {
-      url = `${this.API_URL}?q=${movieName}%20official%20trailer&key=${this.API_TOKEN}&part=snippet&type=video&maxResults=2`;
+      url = `${this.API_URL}?q=${movieName}%20official%20trailer&key=${ApiToken}&part=snippet&type=video&maxResults=2`;
     }
     else {
-      url = `${this.API_URL}?q=${movieName}%20Tv%20Show%20official%20trailer&key=${this.API_TOKEN}&part=snippet&type=video&maxResults=2`;
+      url = `${this.API_URL}?q=${movieName}%20Tv%20Show%20official%20trailer&key=${ApiToken}&part=snippet&type=video&maxResults=2`;
     }
 
-    return this.http.get(url).pipe(
-      map((response: any) => response.items)
-    );
+    return this.http.get(url);
   }
 }
