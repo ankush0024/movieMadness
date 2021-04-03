@@ -52,3 +52,29 @@ border:1px solid transparent;
     text-decoration: inherit;
     color: inherit;height:100%;
     }
+    @media only screen and (max-width: 600px) {
+      .spanMovieList2{
+        margin-left: 39.9vw ;
+    }
+    
+    .divMovieList2 {
+        display: grid;
+        gap: 3.566vw 0.983vw;
+        grid-template-columns: repeat(3, auto);
+        width: 80%;
+        height: 100%;
+        margin: 0px auto;
+    }
+    
+    .divMovieList3{
+        display: flex;
+        flex-direction: column;
+        width: 23.70vw;
+        text-decoration: inherit;
+        color: inherit;
+        height: 100%;
+    }
+    .imageMovieList1{
+      width:22vw;
+          }
+     }
