@@ -75,7 +75,47 @@ color:white;
   height:62.1vh;
 }
 @media only screen and (max-width: 600px) {
- /*  body {
-    background-color: lightblue;
-  } */
+ 
+
+  .pMoive1{
+    color: white;
+    margin-top: -2vh;
+    font-size: 28px;
+    font-weight: 700;
+    height: 1vh;
+    margin-left: 4vw;
+}
+
+
+.pMoive2{
+  margin-top: 2vh;
+  margin-left: 4vw;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.divMoive2 {
+    margin-left: 4.2vw;
+    margin-top: 7vh;
+}
+
+
+.divMoive3{
+    color: white;
+    margin-left: 4vw;
+    max-width: 80vw;
+}
+
+.iframeMoive1{
+  display:block;
+    width: auto; 
+     height: auto;
+    margin-top: 7vh;
+    margin-left: 3.3vw;
+}
+.imgMoive1{
+  display: none;
+}
 }
