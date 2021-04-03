@@ -29,6 +29,7 @@ export class MovieListComponent implements OnInit {
 
     }
     this.isitFavouriteTab = sessionStorage.getItem('favouriteTab');
+    console.log(this.isitFavouriteTab);
     if (this.isitFavouriteTab == true) {
      // this.moviesArray = JSON.parse(localStorage.getItem('movie_favorites'));
     }
@@ -60,6 +61,7 @@ export class MovieListComponent implements OnInit {
     this.getTrending(1)
       .subscribe((res) => {
         this.spinner.hide();
+        console.log(res);
         this.testData = res;
         let movieArray;
         if(this.MovieOrTv==='movie'){
@@ -72,6 +74,8 @@ export class MovieListComponent implements OnInit {
         }));
       }
       this.moviesArray=[...movieArray];
+        //this.moviesArray = this.testData['results'].filter((ele)=>ele.backdrop_path!=undefined&&ele.backdrop_path!=null);
+        console.log(this.moviesArray);
       }
       ,(err)=>{  this.spinner.hide();
         console.error(err);});
@@ -87,6 +91,7 @@ this.spinner.show();
       )
       .subscribe((res) => {
         this.spinner.hide();
+        //  console.log(res);
         this.testData = res;
        // let movieArray=res['results'].filter((ele)=>ele.backdrop_path!=undefined&&ele.backdrop_path!=null);
        let movieArray;
@@ -124,7 +129,7 @@ this.spinner.show();
       )
       .subscribe(res => {
         this.spinner.hide();
-       
+        console.log(res);
         this.moviesArray = [];
         let movieArray;
         if(this.MovieOrTv==='movie'){
@@ -142,6 +147,7 @@ this.spinner.show();
       console.error(err)});
   }
   public addToFav(val){
+    console.log(val);
 let temparr=[...this.favouriteMovieArray];
 if(temparr.filter((ele)=>ele.title===val.title).length==0){
 this.favouriteMovieArray.push(val);
