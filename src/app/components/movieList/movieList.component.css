@@ -59,8 +59,8 @@ border:1px solid transparent;
     
     .divMovieList2 {
         display: grid;
-        gap: 3.566vw 0.983vw;
-        grid-template-columns: repeat(3, auto);
+        gap: 3.566vw 5.000vw;
+        grid-template-columns: repeat(2, auto);
         width: 80%;
         height: 100%;
         margin: 0px auto;
@@ -69,7 +69,7 @@ border:1px solid transparent;
     .divMovieList3{
         display: flex;
         flex-direction: column;
-        width: 23.70vw;
+        width: 38.70vw;
         text-decoration: inherit;
         color: inherit;
         height: 100%;
@@ -77,4 +77,9 @@ border:1px solid transparent;
     .imageMovieList1{
       width:22vw;
           }
+          .selectMovieList1 {
+   
+            height: 5.9vh;
+            width: 16vw;
+        }
      }
