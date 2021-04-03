@@ -1,38 +1,26 @@
-
 <div>
- 
+
   <div>
-    <div style="margin-top: -6vh;">
+    <div class="divMoive1">
       <button class="btn" [routerLink]="'/home'"><i class="fa fa-home"></i> Home</button>
-      <!--   <a style="color:white;margin-left: 4vw;" [routerLink]="'/home'">home</a> -->
       <br><br>
-      <p style="color:white;margin-top: -2vh;
-      font-size: 48px;
-      font-weight: 700;
-      height: 1vh;
-      margin-left: 4vw;">{{movieName}}</p>
-      <div style="margin-left: 4.2vw;
-     margin-top: 10vh;">
-        <h4 style="color: rgb(255, 64, 64); display: inline;max-width: 30%;"
-          *ngFor="let k of movieGenre|slice:0:2 index as i;">
+      <p class="pMoive1">{{movieName}}</p>
+      <div class="divMoive2">
+        <h4 class="h4Moive1" *ngFor="let k of movieGenre|slice:0:2 index as i;">
           {{k}}<span *ngIf="i!=1&&movieGenre.length!=1">,&nbsp;</span>
         </h4>
       </div>
     </div>
-    <p style="margin-top: -4vh;
-    margin-left: 40vw;color:white;
-    font-size: 24px;
-    font-weight: 500;">Rating:&nbsp;&nbsp;<span style="color:rgb(255, 64, 64);">{{movieRating}}</span>/10</p>
+    <p class="pMoive2">Rating:&nbsp;&nbsp;<span class="spanMoive1">{{movieRating}}</span>/10</p>
   </div>
-  <div style="color:white;    margin-left: 4vw;
-  max-width: 50vw;"><span>Overview</span>
+  <div class="divMoive3"><span>Overview</span>
     <br>
-    <span style="color:rgb(96, 96, 96);">{{movieDescription}}</span>
+    <span class="spanMoive2">{{movieDescription}}</span>
   </div>
   <br>
   <div>
-    <img style="display:inline;margin-left: 4vw;    height: 30vw;" class='imag' [src]=moviePoster />
-    <iframe style="display:inline;" width="640" height="360" [src]="videoLink|santise:'resourceUrl'" frameborder="0"
+    <img class='imag imgMoive1' [src]=moviePoster />
+    <iframe class="iframeMoive1" width="640" height="360" [src]="videoLink|santise:'resourceUrl'" frameborder="0"
       allowfullscreen autoplay></iframe>
   </div>
 
