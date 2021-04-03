@@ -1,10 +1,10 @@
 .loadMore{
-  padding: 10px;
+  padding: 0.783vh;
     border: none;
     border-radius: 3px;
     background: rgb(255, 159, 28);
-    color: rgb(18, 18, 18);
-    font-family: Roboto;
+    color: #121212;
+    font-family: sans-serif;
     cursor: pointer;
 }
 .loadMore:hover{background: rgb(42, 42, 42);
@@ -14,9 +14,10 @@
 }
 .imageMovieList{
 cursor:pointer;
+border:1px solid transparent;
     }
     .anchorMovieList1{
-      margin-left: 200px;font-size: 100%;background-color:  #121212;color:white;
+      margin-left: 15.66vw;font-size: 100%;background-color:  #121212;color:white;
     }
     .spanMovieList1{
       margin-left:13vw;
@@ -38,7 +39,7 @@ cursor:pointer;
     }
     .divMovieList2{
       display: grid;
-    gap: 20px 10px;
+    gap: 1.566vw 0.783vw;
     grid-template-columns: repeat(6, auto);
     width: 80%;
     height: 100%;
@@ -47,7 +48,7 @@ cursor:pointer;
     .divMovieList3{
       display: flex;
     flex-direction: column;
-    width: 175px;
+    width: 13.70vw;
     text-decoration: inherit;
     color: inherit;height:100%;
     }
