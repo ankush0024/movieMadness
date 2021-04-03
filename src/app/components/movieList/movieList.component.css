@@ -76,9 +76,10 @@ border:1px solid transparent;
     }
     .imageMovieList1{
       width: 28vw;
+      height: 5.9vh;
           }
           .selectMovieList1 {
-            height: 7.2vh;
+            height: 5.9vh;
     width: 24vw;
         }
      }
