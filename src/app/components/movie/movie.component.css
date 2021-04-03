@@ -105,15 +105,15 @@ color:white;
 .divMoive3{
     color: white;
     margin-left: 4vw;
-    max-width: 80vw;
+    max-width: 90vw;
 }
 
 .iframeMoive1{
   display:block;
     width: auto; 
      height: auto;
-    margin-top: 7vh;
-    margin-left: 3.3vw;
+    margin-top: 1vh;
+    margin: auto;
 }
 .imgMoive1{
   display: none;
