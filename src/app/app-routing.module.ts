@@ -13,8 +13,9 @@ const routes: Routes = [
       { path: '', component: MovieListComponent },
       { path: 'movie/:id', component: MovieComponent },{path:'favourite',component:FavoritesComponent}
     ]
-  },
-  { path: '**', component: PagenotfoundComponent }
+  }
+  /* ,
+  { path: '**', component: PagenotfoundComponent } */
 ];
 
 @NgModule({
