@@ -94,9 +94,6 @@ export class MovieComponent implements OnInit {
     let apiToken;
     if (tokenNo <= environment.youtubeApiKeyArray.length) {
       apiToken = environment.youtubeApiKeyArray.filter((res) => res.id == tokenNo)[0]['token'];
-
-
-
       this.movie.getVideos(this.movieName, movieOrTv, apiToken).subscribe((res) => {
         this.spinner.hide();
         this.youtubeVideoList = res.items;
