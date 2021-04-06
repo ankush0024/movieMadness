@@ -15,7 +15,9 @@ import { HttpInterceptorInterceptor } from './shared/http-interceptor.intercepto
 import {FavoritesComponent} from './components/favorites/favorites.component';
 import { SantisePipe } from './shared/santise.pipe';
 import { NgxSpinnerModule } from "ngx-spinner";
-import { GaugeModule } from 'angular-gauge';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+//import { GaugeModule } from 'angular-gauge';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,7 @@ import { GaugeModule } from 'angular-gauge';
     HomeComponent,FavoritesComponent, SantisePipe
   ],
   imports: [BrowserModule, InputTextModule, BrowserAnimationsModule, AppRoutingModule,
-    HttpClientModule, FormsModule,NgxSpinnerModule,GaugeModule.forRoot()],
+    HttpClientModule, FormsModule,NgxSpinnerModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
