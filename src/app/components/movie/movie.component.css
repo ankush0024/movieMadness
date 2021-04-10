@@ -73,7 +73,8 @@ color:white;
 .iframeMoive1{
   display:inline;
 }
-@media only screen and (min-width: 600px) {.spanMovie{
+@media only screen and (min-width: 600px) {
+  .spanMovie{
   height: 66.91vh;
   background-color: rgb(42, 42, 42);
     padding-right: 3.132vw;
@@ -83,6 +84,9 @@ color:white;
 }
 .iframeMoive1{
   display:inline;
+  width:50.112vw;
+  height:62.1vh;
+  margin-left: 8vw;
 }
 
 }
