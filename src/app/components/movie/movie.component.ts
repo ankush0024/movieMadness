@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent implements OnInit {
+  public releaseDate;
   public MovieTitle: any = null;
   public baseImg: any = 'https://image.tmdb.org/t/p/original/';
   public movieId: any = null;
@@ -56,6 +57,7 @@ export class MovieComponent implements OnInit {
     this.movie.getMovieById(movieId).subscribe((res) => {
       this.movieData = res;
       this.movieName = res['original_title'];
+      this.releaseDate=res['release_date'].split('-')[0];
       this.movieDescription = this.movieData.overview;
       this.MovieTitle = this.movieData.original_title;
       this.movieInfo.title = this.MovieTitle;
@@ -76,6 +78,7 @@ export class MovieComponent implements OnInit {
     this.movie.getTvById(tvId).subscribe((res) => {
       this.movieData = res;
       this.movieName = res['name'];
+      this.releaseDate=res['first_air_date'].split('-')[0];
       this.movieDescription = this.movieData.overview;
       this.MovieTitle = this.movieData.original_title;
       this.movieInfo.title = this.MovieTitle;
