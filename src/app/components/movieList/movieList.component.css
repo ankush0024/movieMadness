@@ -15,8 +15,6 @@
 .imageMovieList{
 cursor:pointer;
 border:1px solid transparent;
-width: 13.7vw;
-height: 45vh;
     }
     .anchorMovieList1{
       margin-left: 15.66vw;font-size: 100%;background-color:  #121212;color:white;
@@ -55,7 +53,12 @@ height: 45vh;
     color: inherit;height:100%;
     background-color: rgb(42, 42, 42);
     }
-
+    @media only screen and (min-width: 600px) {
+      .imageMovieList{
+        width: 13.7vw;
+        height: 45vh;
+            }
+    }
 
     @media only screen and (max-width: 600px) {
       .spanMovieList2{
