@@ -30,7 +30,7 @@ export class MovieComponent implements OnInit {
   public movieInfo = { id: '', poster_path: '', title: '' };
   constructor(private route: ActivatedRoute, private movie: MovieService, private spinner: NgxSpinnerService) { }
   public youtubeVideoList: any = [];
-  public videoLink;
+  public videoLink='';
   public videoId;
   public temp;
   public movieName;
