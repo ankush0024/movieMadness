@@ -7,6 +7,7 @@
     font-family: sans-serif;
     cursor: pointer;
 }
+
 .loadMore:hover{background: rgb(42, 42, 42);
     color: rgb(255, 255, 255);}
 .imageMovieList:hover{

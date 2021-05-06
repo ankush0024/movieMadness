@@ -4,30 +4,44 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpResponse
+  HttpResponse,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { catchError,filter, map } from 'rxjs/operators'
-
+import { Observable, throwError } from 'rxjs';
+import { catchError, filter, map } from 'rxjs/operators'
 
 
 @Injectable()
 export class HttpInterceptorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor() { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<any> {
-   const API_key:string='c30605bf20d63e4be66ebbc5422b595b&language=en-US';
-   let updatedUrl;
-   if(request.url.includes('trending')||request.url.includes('query')){
-    updatedUrl=`${request.url}&api_key=${API_key}`;
-   }
-   else if(request.url.includes('movie')||request.url.includes('tv')){
-    updatedUrl=`${request.url}?api_key=${API_key}`;
-   }
-   else{
-    updatedUrl=request.url;
-   }
-   return next.handle(request.clone({url:updatedUrl}));
+    const API_key: string = 'c30605bf20d63e4be66ebbc5422b595b&language=en-US';
+    let updatedUrl;
+    switch (true) {
+      case request.url.includes('trending'):
+      case request.url.includes('query'):
+        updatedUrl = `${request.url}&api_key=${API_key}`;
+        break;
+      case request.url.includes('movie'):
+      case request.url.includes('tv'):
+        updatedUrl = `${request.url}?api_key=${API_key}`;
+        break;
+      default:
+        updatedUrl = request.url;
+    }
+    return next.handle(request.clone({ url: updatedUrl })).pipe(catchError(this.handleError));
   }
+  handleError(err) {
+    if (err.status >= 500) {
+      err.message='servor error';
+    }
+    else if (err.status >= 400 && err.status < 500) {
+     err.message='network error!';
+    }
+    return throwError(err);
+  }
+
+
 }

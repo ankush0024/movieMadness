@@ -9,23 +9,19 @@ import { FormsModule } from '@angular/forms';
 import { MovieComponent } from './components/movie/movie.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpInterceptorInterceptor } from './shared/http-interceptor.interceptor';
-import {FavoritesComponent} from './components/favorites/favorites.component';
 import { SantisePipe } from './shared/santise.pipe';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-//import { GaugeModule } from 'angular-gauge';
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
     PagenotfoundComponent,
     MovieComponent,
-    NavbarComponent,
-    HomeComponent,FavoritesComponent, SantisePipe
+    HomeComponent,SantisePipe
   ],
   imports: [BrowserModule, InputTextModule, BrowserAnimationsModule, AppRoutingModule,
     HttpClientModule, FormsModule,NgxSpinnerModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
