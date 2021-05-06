@@ -15,7 +15,6 @@ import { SantisePipe } from './shared/santise.pipe';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-//import { GaugeModule } from 'angular-gauge';
 @NgModule({
   declarations: [
     AppComponent,

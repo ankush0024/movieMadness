@@ -4,7 +4,7 @@
     <div class="divMoive1">
       <button class="btn" [routerLink]="'/home'"><i class="fa fa-home"></i> Home</button>
       <br><br>
-      <p class="pMoive1">{{movieName}}&nbsp;<span *ngIf="releaseDate">({{releaseDate?releaseDate:'Na'}})</span></p>
+      <p class="pMoive1">{{movieName}}&nbsp;<span *ngIf="movieInfo.release_date">({{movieInfo.release_date?movieInfo.release_date:'Na'}})</span></p>
       <div class="divMoive2">
         <h4 class="h4Moive1" *ngFor="let k of movieGenre|slice:0:2 index as i;">
           {{k}}<span *ngIf="i!=1&&movieGenre.length!=1">,&nbsp;</span>
@@ -28,7 +28,7 @@
   </div>
   <br>
   <div>
-    <span class="spanMovie">
+    <span class="spanMovie" *ngIf="moviePoster">
     <img class='imag imgMoive1' [src]=moviePoster />
   </span>
     <iframe class="iframeMoive1" [src]="videoLink|santise:'resourceUrl'" frameborder="0"
