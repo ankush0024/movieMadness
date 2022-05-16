@@ -18,13 +18,14 @@
 </span>
 <br><br><br>
 <div class="divMovieList1">
-  <div class="divMovieList2">
+  <div class="divMovieList2"  infinite-scroll [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollUpDistance]="scrollUpDistance"
+  [infiniteScrollThrottle]="throttle"
+  (scrolled)="onScrollDown()">
     <a class="divMovieList3" *ngFor="let k of moviesArray">
       <img class="imageMovieList" [title]='k.title' [src]='baseImgUrl+k.poster_path'
         (click)="NavigateToMovieDetailPage(k.id);" [alt]="k.title">
     </a>
-
-    <button [hidden]="movieSearch" class="loadMore" (click)="loadMore();">LoadMore</button>
   </div>
 </div>
 <p style="color:white;float:right;">Created by Ankush Singhal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>

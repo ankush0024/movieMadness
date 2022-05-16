@@ -14,7 +14,9 @@ import { HttpInterceptorInterceptor } from './shared/http-interceptor.intercepto
 import { SantisePipe } from './shared/santise.pipe';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,7 @@ import { environment } from '../environments/environment';
     MovieComponent,
     HomeComponent,SantisePipe
   ],
-  imports: [BrowserModule, InputTextModule, BrowserAnimationsModule, AppRoutingModule,
+  imports: [BrowserModule, InputTextModule, BrowserAnimationsModule, AppRoutingModule,InfiniteScrollModule,
     HttpClientModule, FormsModule,NgxSpinnerModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]

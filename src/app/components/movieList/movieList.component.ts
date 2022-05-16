@@ -15,6 +15,9 @@ export class MovieListComponent implements OnInit {
   public moviesArray: any = [];
   public movieSearch: string;
   public MovieOrTv: string;
+  throttle = 300;
+  scrollDistance = 1;
+  scrollUpDistance = 2;
   ngOnInit(): void {
     if (!localStorage.getItem("MovieOrTv") || localStorage.getItem("MovieOrTv") == undefined) {
       localStorage.setItem("MovieOrTv", "movie");
@@ -168,5 +171,10 @@ public NavigateToMovieDetailPage(id) {
           this.spinner.hide();
           console.error(err)
         });
+  }
+
+
+  onScrollDown() {
+    this.loadMore();
   }
 }
